@@ -54,8 +54,13 @@ jobs:
       - name: Build Windows release candidate
         shell: pwsh
         run: |
-          $buildMode = if ($env:GITHUB_REF_TYPE -eq 'tag') { @('--tag', $env:GITHUB_REF_NAME) } else { @('--allow-local') }
-          .\.venv-build\Scripts\python.exe -X utf8 tools/build_release.py --output dist/release --iscc $env:ISCC_PATH @buildMode
+          $buildArgs = @('--output', 'dist/release', '--iscc', $env:ISCC_PATH)
+          if ($env:GITHUB_REF_TYPE -eq 'tag') {
+            $buildArgs += @('--tag', $env:GITHUB_REF_NAME)
+          } else {
+            $buildArgs += '--allow-local'
+          }
+          .\.venv-build\Scripts\python.exe -X utf8 tools/build_release.py @buildArgs
       - uses: actions/upload-artifact@v7
         with:
           name: CzernyScope-windows-packages
