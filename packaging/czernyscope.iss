@@ -48,3 +48,6 @@ Name: "{autodesktop}\CzernyScope"; Filename: "{app}\{#AppExe}"; AppUserModelID: 
 
 [Run]
 Filename: "{app}\{#AppExe}"; Description: "Start CzernyScope"; Flags: nowait postinstall skipifsilent
+
+[Code]
+#include "msvc_prerequisite.iss"

@@ -1,0 +1,81 @@
+CzernyScope Windows x64
+THIRD-PARTY SOFTWARE NOTICES
+
+This application includes Qt and Qt for Python libraries under the GNU
+Lesser General Public License, version 3, and native libusb under the GNU
+Lesser General Public License, version 2.1 or later. The Qt Company Ltd.
+and the respective contributors retain the Qt and Qt for Python copyrights.
+The libusb authors and contributors retain the libusb copyrights. The
+license files and the matching source identify individual copyright holders.
+
+Qt 6.11.2 and Qt for Python 6.11.2
+---------------------------------
+The bundled Qt modules are from Qt Base, Qt SVG and Qt Image Formats.
+PySide6 Essentials and Shiboken6 provide the Python bindings and runtime.
+See licenses/Qt-LGPL-3.0.txt and licenses/Qt-GPL-3.0.txt. The GPL text
+accompanies the LGPL text as required by its terms. See the Qt source for
+module and file notices. The component attribution index and license
+texts are in licenses/qt-components.
+
+Native libusb 1.0.30 and libusb-package 1.0.30.1
+----------------------------------------------
+Native libusb is distributed under LGPL 2.1 or later. See
+licenses/libusb-1.0.30-LGPL-2.1.txt. The libusb-package Python wrapper is
+provided by the libusb-package contributors under Apache License 2.0.
+See licenses/libusb-package-1.0.30.1-Apache-2.0.txt and its bundled
+distribution metadata.
+
+CPython 3.12.10 and OpenSSL 3.0.16
+--------------------------------
+CPython is distributed under the Python Software Foundation license and
+the other terms included in LICENSE.txt beside this notice. The OpenSSL
+Toolkit is distributed under Apache License 2.0. Copyright 1998-2025 The
+OpenSSL Authors. All rights reserved. The bundled OpenSSL files are
+libssl-3.dll and libcrypto-3.dll. See licenses/OpenSSL-3.0.16-LICENSE.txt.
+
+CPython source release:
+https://www.python.org/downloads/release/python-31210/
+
+OpenSSL source release:
+https://github.com/openssl/openssl/releases/tag/openssl-3.0.16
+
+Other components
+----------------
+The .dist-info folders beside this notice retain the wheel metadata and
+included license files, including the NumPy wheel's notices for OpenBLAS,
+LAPACK and compiler runtime components. LIGHTKEEPER-LICENSE.txt contains
+the MIT notice for the LightKeeper USB650 protocol adaptation.
+
+Corresponding source
+--------------------
+CzernyScope-<version>-third-party-source.zip is the source asset for Qt,
+Qt for Python, native libusb and libusb-package. Open the GitHub release
+that matches the version shown under Help > About CzernyScope. The
+source manifest identifies the original archives and revisions.
+
+https://github.com/Fisicas/CzernyScope/releases
+
+Replacing the LGPL libraries
+-----------------------------
+The applicable LGPL terms cover modifying the libraries and reverse
+engineering to debug those modifications. You can use compatible modified
+library builds with this application.
+
+1. Close CzernyScope. Make a copy of the portable application folder, or
+   open the installed folder (normally
+   %LOCALAPPDATA%\Programs\CzernyScope). These paths are relative to
+   CzernyScope.exe. Keep backups of the original library files.
+2. Replace Qt6 DLLs in _internal\PySide6 and any corresponding plugin DLLs
+   in _internal\PySide6\plugins. Keep the Qt DLLs, plugins and bindings
+   ABI-compatible with each other and use Windows x64 builds.
+3. PySide6 and Shiboken6 are loaded from _internal\PySide6 and
+   _internal\shiboken6. These folders hold the external Python files,
+   Python extension modules (.pyd), and binding runtime DLLs. Build
+   replacements for the bundled Qt and CPython 3.12 Windows x64 ABI.
+   Keep compatible PySide6 and Shiboken6 builds together.
+4. Replace native libusb at _internal\libusb_package\libusb-1.0.dll
+   with a Windows x64 libusb-1.0 DLL exporting the compatible API.
+5. Restart CzernyScope. Use --demo Maya2000Pro to check the plot with
+   simulated data. The installer refreshes _internal during upgrades.
+   Store custom libraries outside the app folder and check compatibility
+   before reapplying them after an upgrade.

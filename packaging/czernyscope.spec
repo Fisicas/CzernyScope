@@ -38,6 +38,8 @@ datas = [
     (str(ICON), "spectrometer_app/assets"),
     (str(Path(SPECPATH) / "LIGHTKEEPER-LICENSE.txt"), "."),
     (str(CPYTHON_LICENSE), "."),
+    (str(Path(SPECPATH) / "third-party/THIRD-PARTY-NOTICES.txt"), "."),
+    (str(Path(SPECPATH) / "third-party/licenses"), "licenses"),
 ]
 for distribution in (
     "seabreeze", "pyusb", "libusb-package", "importlib-resources", "numpy", "matplotlib",
@@ -65,6 +67,7 @@ a = Analysis(
         *collect_submodules("seabreeze.pyseabreeze"),
     ],
     hooksconfig={"matplotlib": {"backends": ["QtAgg"]}},
+    module_collection_mode={"PySide6": "py", "shiboken6": "py"},
     excludes=[
         "PyQt5", "PyQt6", "PySide2", "tkinter", "IPython", "seabreeze.cseabreeze",
         "pytest", "pandas", "scipy", "jinja2",
@@ -75,6 +78,10 @@ a = Analysis(
 def keep_binary(entry):
     destination, source, _ = entry
     name = Path(destination).name.casefold()
+    # The English Qt Widgets app uses the native Windows platform plugin.
+    # Qt's optional software OpenGL fallback is unnecessary for QtAgg.
+    if Path(destination) == Path("PySide6/opengl32sw.dll"):
+        return False
     # Qt 6.11 uses Windows ICU. A private ICU can shadow it.
     if name == "icuuc.dll":
         return False
@@ -88,6 +95,13 @@ def keep_binary(entry):
 
 
 a.binaries = [entry for entry in a.binaries if keep_binary(entry)]
+a.datas = [
+    entry for entry in a.datas
+    if not (
+        Path(entry[0]).is_relative_to(Path("PySide6/translations"))
+        and Path(entry[0]).suffix == ".qm"
+    )
+]
 if sum(Path(entry[0]) == usb_destination for entry in a.binaries) != 1:
     raise ValueError("The frozen app needs exactly one package-relative libusb-1.0.dll.")
 pyz = PYZ(a.pure)

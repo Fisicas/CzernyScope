@@ -1072,7 +1072,9 @@ class SpectrumWindow(QMainWindow):
             f"About {APP_NAME}",
             f"{APP_NAME} {__version__}\n\n"
             "Live acquisition for Ocean Optics Maya2000 Pro and USB650 on Windows. "
-            "Hardware access uses SeaBreeze. Demo instruments produce synthetic spectra.",
+            "Hardware access uses SeaBreeze. Demo instruments produce synthetic spectra.\n\n"
+            "The Windows package uses Qt and Qt for Python under LGPLv3. "
+            "See _internal/THIRD-PARTY-NOTICES.txt in the installation folder.",
             warning=False,
         )
 

@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import ssl
 import struct
 import subprocess
 import sys
@@ -81,8 +82,10 @@ def find_inno(explicit: Path | None) -> Path:
 
 
 def require_tools() -> None:
+    if sys.version_info[:3] != (3, 12, 10) or ssl.OPENSSL_VERSION.split()[:2] != ["OpenSSL", "3.0.16"]:
+        raise ValueError("Use the CPython 3.12.10 Windows build with OpenSSL 3.0.16 referenced in the notices.")
     missing = [
-        name for name in ("PyInstaller", "pefile", "numpy", "matplotlib", "PySide6",
+        name for name in ("PyInstaller", "pefile", "delvewheel", "numpy", "matplotlib", "PySide6",
                           "seabreeze", "usb", "libusb_package")
         if importlib.util.find_spec(name) is None
     ]
@@ -181,6 +184,8 @@ def main() -> int:
     except (OSError, ValueError) as error:
         parser.error(str(error))
 
+    from windows_runtime import prepare_system_runtime
+
     output.mkdir(parents=True, exist_ok=False)
     packages = output / "packages"
     packages.mkdir()
@@ -191,6 +196,9 @@ def main() -> int:
         cwd=ROOT, timeout=1200, env=env,
     )
     app_bundle = app_directory / APP_NAME
+    system_runtime = prepare_system_runtime(app_bundle, env)
+    prerequisite = (PACKAGING / "msvc_prerequisite.iss").read_bytes()
+    system_runtime["prerequisite_script_sha256"] = hashlib.sha256(prerequisite).hexdigest()
     executable = app_bundle / f"{APP_NAME}.exe"
     _verify_windows_product(executable, version, x64=True)
     demo = _smoke(executable, output, version, env)
@@ -217,6 +225,7 @@ def main() -> int:
             package.metadata["Name"]: package.version for package in importlib.metadata.distributions()
         },
         "assets_sha256": _write_checksums(artifacts),
+        "windows_runtime": system_runtime,
         "frozen_demo": demo,
         "portable_zip_verified": True,
         "installer_compiled": compiler is not None,

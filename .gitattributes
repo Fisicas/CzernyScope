@@ -1,1 +1,2 @@
 integration/*.patch -text
+packaging/third-party/licenses/** -text -whitespace

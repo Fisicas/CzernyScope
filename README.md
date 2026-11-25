@@ -50,7 +50,7 @@ The focusing mirror maps these angles to positions on the detector. The pixels c
 
 ## Open the app
 
-When a stable Windows release is available, download and run `CzernyScope-<version>-setup.exe` and open **CzernyScope** from the Start menu. The installer includes Python and the app dependencies. A portable ZIP is also available with each packaged release. [Latest release](https://github.com/Fisicas/CzernyScope/releases/latest)
+When a stable Windows release is available, download and run `CzernyScope-<version>-setup.exe` and open **CzernyScope** from the Start menu. The installer includes Python and the USB libraries. On a PC that needs the Microsoft Visual C++ x64 runtime, Setup downloads it from Microsoft and Windows can ask for administrator approval. Install the Microsoft runtime first if you use the portable ZIP on such a PC. [Latest release](https://github.com/Fisicas/CzernyScope/releases/latest) · [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)
 
 CzernyScope checks daily for stable releases while it is open. Use **Help → Check for updates…** to check on demand or **Help → Check for updates automatically** to toggle background checks. To upgrade, download the newer installer, close CzernyScope, and run it over the existing installation. Spectra and dark libraries live in your data folder.
 
@@ -140,7 +140,7 @@ Build the installer and portable ZIP from the same source version. [Windows rele
 
 Run `python -X utf8 tools/render_czerny_turner.py` from this folder to regenerate the schematic with NumPy and Matplotlib. The renderer verifies the first-order diffraction law, mirror footprints, crossing paths, and separation of the detector spots.
 
-Run the software tests with `python -X utf8 -m pytest -q` from this folder using Python with pytest and the app dependencies. The suite covers exact dark matching, cancellation, retained library selection, paired export, timed acquisition, and simulated GUI workflows. OPUS 8.2.28 opened a corrected example via **Load Spectrum** with the **Text file** filter. The previously saved physical Maya spectrum and its complete dark sweep were also checked by replaying the data through the desktop UI. The USB650 decoder was checked with a synthetic packet and still needs an on-device test in this app.
+Run the software tests with `python -X utf8 -m pytest -q` from this folder using Python with pytest and the app dependencies. The suite covers exact dark matching, cancellation, retained library selection, paired export, timed acquisition, and simulated GUI workflows. OPUS 8.2.28 opened a corrected example via **Load Spectrum** with the **Text file** filter. The previously saved physical Maya spectrum and its complete dark sweep were also checked by replaying the data through the desktop UI. The USB650 decoder passed a synthetic packet test, and an initial check with a physical USB650 reported normal operation.
 
 ## Licensing
 

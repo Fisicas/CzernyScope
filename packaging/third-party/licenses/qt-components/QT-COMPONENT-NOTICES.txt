@@ -1,0 +1,444 @@
+CzernyScope Windows x64
+Qt 6.11.2 third-party component notices
+=====================================
+
+The files below accompany the Qt Base, Qt SVG and Qt Image Formats
+libraries and plugins in the Windows package. These records identify
+open-source material in the matching Qt source. Some components are
+optional Qt build features and their presence in a particular DLL
+depends on the upstream wheel build configuration.
+
+CzernyScope uses Qt Core, Gui, Network, Widgets, SVG and the Windows and
+image format plugins. The scope of this set is the source-level
+attribution for those Qt modules and the corresponding Windows plugins.
+The Qt/PySide LGPL and GPL terms are provided separately in the main
+THIRD-PARTY-NOTICES.txt and its accompanying licenses. The matching
+source archives remain the authoritative copy of the component notices.
+
+License files and the Qt attribution JSON records have been preserved
+with their original bytes. The manifest maps files to the source
+archives and records their SHA-256 checksums. Entries below are in Qt
+module order. Paths are relative to this notice folder.
+
+qtbase
+------
+
+Adobe Glyph List For New Fonts (1.7)
+  Qt documentation module   qtgui
+  License   BSD 3-Clause "New" or "Revised" License
+  Copyright 2002, 2003, 2005, 2006, 2008, 2010, 2015 Adobe Systems
+  licenses/qtbase/src/gui/text/LICENSE.AGLFN.txt
+  attributions/qtbase/src/gui/text/qt_attribution.json
+
+Anti-aliasing rasterizer from FreeType 2
+  Qt documentation module   qtgui
+  License   Freetype Project License or GNU General Public License v2.0 only
+  Copyright 2000-2016 by David Turner, Robert Wilhelm, and Werner Lemberg.
+  licenses/qtbase/src/3rdparty/freetype/LICENSE.txt
+  attributions/qtbase/src/gui/painting/qt_attribution.json
+
+Apache Tika MimeType Definitions (c29724782854bb5a319f4a1940d0828a58ace3f9)
+  Qt documentation module   qtcore
+  License   Apache License 2.0
+  Copyright 2026 The Apache Software Foundation
+  licenses/qtbase/LICENSES/Apache-2.0.txt
+  attributions/qtbase/src/corelib/mimetypes/3rdparty/qt_attribution.json
+
+BLAKE2 (reference implementation) (ed1974ea83433eba7b2d95c5dcd9ac33cb847913)
+  Qt documentation module   qtcore
+  License   Creative Commons Zero v1.0 Universal or Apache License 2.0
+  Copyright 2012, Samuel Neves <sneves@dei.uc.pt>
+  licenses/qtbase/src/3rdparty/blake2/COPYING
+  attributions/qtbase/src/3rdparty/blake2/qt_attribution.json
+
+D3D12 Memory Allocator (f128d39b7a95b4235bd228d231646278dc6c24b2)
+  Qt documentation module   qtgui
+  License   MIT License
+  Copyright (c) 2019-2022 Advanced Micro Devices, Inc. All rights reserved.
+  licenses/qtbase/src/3rdparty/D3D12MemoryAllocator/LICENSE.txt
+  attributions/qtbase/src/3rdparty/D3D12MemoryAllocator/qt_attribution.json
+
+Data Compression Library (zlib) (1.3.2)
+  Qt documentation module   qtcore
+  License   zlib License
+  (C) 1995-2026 Jean-loup Gailly and Mark Adler
+  licenses/qtbase/src/3rdparty/zlib/LICENSE
+  attributions/qtbase/src/3rdparty/zlib/qt_attribution.json
+
+Easing Equations by Robert Penner
+  Qt documentation module   qtcore
+  License   BSD 3-clause "New" or "Revised" License
+  Copyright (c) 2001 Robert Penner
+  licenses/qtbase/src/3rdparty/easing/LICENSE
+  attributions/qtbase/src/3rdparty/easing/qt_attribution.json
+
+Efficient Binary-Decimal and Decimal-Binary Conversion Routines for IEEE Doubles (3.4.0)
+  Qt documentation module   qtcore
+  License   BSD 3-clause "New" or "Revised" License
+  Copyright 2006-2012, the V8 project authors
+  licenses/qtbase/src/3rdparty/double-conversion/LICENSE
+  attributions/qtbase/src/3rdparty/double-conversion/qt_attribution.json
+
+Emoji Segmenter (0.4.0)
+  Qt documentation module   qtgui
+  License   Apache License 2.0
+  Copyright 2019 Google LLC
+  licenses/qtbase/LICENSES/Apache-2.0.txt
+  attributions/qtbase/src/3rdparty/emoji-segmenter/qt_attribution.json
+
+extra-cmake-modules (5.84.0)
+  Qt documentation module   qtcore
+  License   BSD-3-Clause
+  Copyright © 2011-2018 The KDE community
+  licenses/qtbase/cmake/3rdparty/extra-cmake-modules/COPYING-CMAKE-SCRIPTS
+  attributions/qtbase/cmake/3rdparty/extra-cmake-modules/qt_attribution.json
+
+Freetype 2 (2.14.3)
+  Qt documentation module   qtgui
+  License   Freetype Project License or GNU General Public License v2.0 only
+  Copyright (c) 2007-2014 Adobe Systems Incorporated
+  Copyright (c) 2004-2026 Albert Chin-A-Young
+  Copyright (c) 2018-2026 Armin Hasitzka, David Turner, Robert Wilhelm, and Werner Lemberg
+  Copyright (c) 2000 Computing Research Labs, New Mexico State University
+  Copyright (c) 1996-2026 David Turner, Robert Wilhelm, Dominik Röttsches, and Werner Lemberg
+  Copyright (c) 2004-2026 David Turner, Robert Wilhelm, Werner Lemberg and George Williams
+  Copyright (c) 2022-2026 David Turner, Robert Wilhelm, Werner Lemberg, and Moazin Khatti
+  Copyright (c) 2008-2026 David Turner, Robert Wilhelm, Werner Lemberg, and suzuki toshiya
+  Copyright (c) 2003-2026 David Turner, Robert Wilhelm, and Werner Lemberg
+  Copyright (c) 2005-2026 David Turner
+  Copyright (c) 2007-2026 Derek Clegg and Michael Toftdal
+  Copyright (c) 2007 Dmitry Timoshkov for Codeweavers
+  Copyright (c) 2001-2015 Francesco Zappa Nardelli
+  Copyright (c) 2005, 2007, 2008, 2013 George Williams
+  Copyright (c) 2013-2026 Google, Inc. Google Author(s) Behdad Esfahbod and Stuart Gill
+  Copyright (c) 2013-2022 Google, Inc.
+  Copyright (c) 2003 Huw D M Davies for Codeweavers
+  Copyright (c) 2010-2026 Joel Klinghed
+  Copyright (c) 1996-2026 Just van Rossum, David Turner, Robert Wilhelm, and Werner Lemberg
+  Copyright (c) 2003-2026 Masatake YAMATO and Redhat K.K.
+  Copyright (c) 2004-2026 Masatake YAMATO, Redhat K.K, David Turner, Robert Wilhelm, and Werner Lemberg
+  Copyright (c) 2019-2026 Nikhil Ramakrishnan, David Turner, Robert Wilhelm, and Werner Lemberg
+  Copyright (c) 2009-2026 Oran Agra and Mickey Gabel
+  Copyright (c) 2007-2026 Rahul Bhalerao <rahul.bhalerao@redhat.com>
+  Copyright (c) 2002-2026 Roberto Alameda
+  Copyright (c) 2015-2026 Werner Lemberg
+  Copyright (c) 2004-2026 suzuki toshiya, Masatake YAMATO, Red Hat K.K., David Turner, Robert Wilhelm, and Werner Lemberg
+  Copyright (c) 2019 nyorain
+  Copyright (c) 2022-2026 David Turner, Robert Wilhelm, Werner Lemberg, George Williams, and Dominik Röttsches
+  Copyright (C) 2009, 2023  Red Hat, Inc.
+  licenses/qtbase/src/3rdparty/freetype/LICENSE.txt
+  licenses/qtbase/src/3rdparty/freetype/docs/FTL.TXT
+  licenses/qtbase/src/3rdparty/freetype/docs/GPLv2.TXT
+  attributions/qtbase/src/3rdparty/freetype/qt_attribution.json
+
+Freetype 2 - Bitmap Distribution Format (BDF) support
+  Qt documentation module   qtgui
+  License   MIT License
+  Copyright (c) 2000 Computing Research Labs, New Mexico State University
+  Copyright (c) 2001-2014 Francesco Zappa Nardelli
+  licenses/qtbase/src/3rdparty/freetype/BDF-LICENSE.txt
+  attributions/qtbase/src/3rdparty/freetype/qt_attribution.json
+
+Freetype 2 - Portable Compiled Format (PCF) support
+  Qt documentation module   qtgui
+  License   MIT License and MIT Open Group variant
+  Copyright (c) 2001, 2012 David Turner, Robert Wilhelm, and Werner Lemberg
+  Copyright (c) 2000-2014 Francesco Zappa Nardelli
+  Copyright (c) 1990, 1994, 1998 The Open Group
+  licenses/qtbase/src/3rdparty/freetype/PCF-LICENSE.txt
+  attributions/qtbase/src/3rdparty/freetype/qt_attribution.json
+
+Freetype 2 - zlib
+  Qt documentation module   qtgui
+  License   zlib License
+  Copyright (C) 1995-2024 Jean-loup Gailly and Mark Adler
+  licenses/qtbase/src/3rdparty/freetype/ZLIB-LICENSE.txt
+  attributions/qtbase/src/3rdparty/freetype/qt_attribution.json
+
+HarfBuzz-NG (14.3.0)
+  Qt documentation module   qtgui
+  License   MIT License
+  Copyright © 2010-2022  Google, Inc.
+  Copyright © 2015-2020  Ebrahim Byagowi
+  Copyright © 2019,2020  Facebook, Inc.
+  Copyright © 2012,2015  Mozilla Foundation
+  Copyright © 2011  Codethink Limited
+  Copyright © 2008,2010  Nokia Corporation and/or its subsidiary(-ies)
+  Copyright © 2009  Keith Stribley
+  Copyright © 2011  Martin Hosken and SIL International
+  Copyright © 2007  Chris Wilson
+  Copyright © 2005,2006,2020,2021,2022,2023  Behdad Esfahbod
+  Copyright © 2004,2007,2008,2009,2010,2013,2021,2022,2023  Red Hat, Inc.
+  Copyright © 1998-2005  David Turner and Werner Lemberg
+  Copyright © 2016  Igalia S.L.
+  Copyright © 2022  Matthias Clasen
+  Copyright © 2018,2021  Khaled Hosny
+  Copyright © 2018,2019,2020  Adobe, Inc
+  Copyright © 2013-2015  Alexei Podtelezhnikov
+  licenses/qtbase/src/3rdparty/harfbuzz-ng/COPYING
+  attributions/qtbase/src/3rdparty/harfbuzz-ng/qt_attribution.json
+
+KWin (5.13.4)
+  Qt documentation module   qtcore
+  License   BSD 3-Clause "New" or "Revised" License
+  Copyright 2014 Alex Merry <alex.merry@kde.org>
+  Copyright 2014 Martin Gräßlin <mgraesslin@kde.org>
+  Copyright (c) 2006,2007 Laurent Montel, <montel@kde.org>
+  licenses/qtbase/cmake/3rdparty/kwin/COPYING-CMAKE-SCRIPTS
+  attributions/qtbase/cmake/3rdparty/kwin/qt_attribution.json
+
+LibJPEG-turbo (3.2.0)
+  Qt documentation module   qtgui
+  License   Independent JPEG Group License and BSD 3-Clause "New" or "Revised" License
+  licenses/qtbase/src/3rdparty/libjpeg/LICENSE
+  licenses/qtbase/src/3rdparty/libjpeg/ijg-license.txt
+  attributions/qtbase/src/3rdparty/libjpeg/qt_attribution.json
+
+LibPNG (1.6.58)
+  Qt documentation module   qtgui
+  License   libpng License and PNG Reference Library version 2
+  Copyright (c) 1995-2026 The PNG Reference Library Authors
+  Copyright (c) 2000-2026 Cosmin Truta
+  Copyright (c) 1998-2018 Glenn Randers-Pehrson
+  Copyright (c) 1996-1997 Andreas Dilger
+  Copyright (c) 1995-1996 Guy Eric Schalnat, Group 42, Inc.
+  Copyright (c) 2000-2017 Simon-Pierre Cadieux
+  Copyright (c) 2000-2017 Eric S. Raymond
+  Copyright (c) 2000-2017 Mans Rullgard
+  Copyright (c) 2000-2017 Gilles Vollant
+  Copyright (c) 2000-2017 James Yu
+  Copyright (c) 2000-2017 Mandar Sahastrabuddhe
+  Copyright (c) 1998-2000 Tom Lane
+  Copyright (c) 1998-2000 Willem van Schaik
+  Copyright (c) 1996-1997 John Bowler
+  Copyright (c) 1996-1997 Kevin Bracey
+  Copyright (c) 1996-1997 Sam Bushell
+  Copyright (c) 1996-1997 Magnus Holmgren
+  Copyright (c) 1996-1997 Greg Roelofs
+  Copyright (c) 1996-1997 Tom Tanner
+  Copyright (c) 1995-1996 Dave Martindale
+  Copyright (c) 1995-1996 Paul Schmidt
+  Copyright (c) 1995-1996 Tim Wegner
+  licenses/qtbase/src/3rdparty/libpng/LICENSE
+  attributions/qtbase/src/3rdparty/libpng/qt_attribution.json
+
+libpsl - C library to handle the Public Suffix List (664f3dc85259ec65e30248a61fa1c45b7b0e4c3f)
+  Qt documentation module   qtnetwork
+  License   BSD 3-clause "New" or "Revised" License
+  Copyright 2014-2016 The Chromium Authors. All rights reserved.
+  licenses/qtbase/src/3rdparty/libpsl/src/LICENSE.chromium
+  attributions/qtbase/src/3rdparty/libpsl/qt_attribution.json
+
+MD4
+  Qt documentation module   qtcore
+  License   Public Domain
+  Written by Alexander Peslyak - better known as Solar Designer <solar@openwall.com> - in 2001, and placed in the public domain. There's absolutely no warranty.
+  licenses/qtbase/LICENSES/CC0-1.0.txt
+  attributions/qtbase/src/3rdparty/md4/qt_attribution.json
+
+MD4C (0.5.3)
+  Qt documentation module   qtgui
+  License   MIT License
+  Copyright © 2016-2024 Martin Mitáš
+  licenses/qtbase/src/3rdparty/md4c/LICENSE.md
+  attributions/qtbase/src/3rdparty/md4c/qt_attribution.json
+
+MD5
+  Qt documentation module   qtcore
+  License   Public Domain
+  Written by Colin Plumb in 1993, no copyright is claimed. Ian Jackson <ian@chiark.greenend.org.uk>.
+  licenses/qtbase/LICENSES/CC0-1.0.txt
+  attributions/qtbase/src/3rdparty/md5/qt_attribution.json
+
+Mipmap generator for D3D12 (0aa79bad78992da0b6a8279ddb9002c1753cb849)
+  Qt documentation module   qtgui
+  License   MIT License
+  Copyright (c) 2015 Microsoft
+  licenses/qtbase/src/gui/rhi/LICENSE.MiniEngine.txt
+  attributions/qtbase/src/gui/rhi/qt_attribution.json
+
+OpenGL ES 2 Headers (Revision 27673)
+  Qt documentation module   qtgui
+  License   MIT License
+  Copyright (c) 2013-2014 The Khronos Group Inc.
+  licenses/qtbase/src/gui/opengl/LICENSE.KHRONOS.txt
+  attributions/qtbase/src/gui/opengl/qt_attribution.json
+
+OpenGL Headers (Revision 27684)
+  Qt documentation module   qtgui
+  License   MIT License
+  Copyright (c) 2013-2014 The Khronos Group Inc.
+  licenses/qtbase/src/gui/opengl/LICENSE.KHRONOS.txt
+  attributions/qtbase/src/gui/opengl/qt_attribution.json
+
+PCRE2 (10.47)
+  Qt documentation module   qtcore
+  License   BSD 3-clause "New" or "Revised" License with PCRE2 binary-like Packages Exception
+  Copyright (c) 1997-2007 University of Cambridge
+  Copyright (c) 2007-2024 Philip Hazel
+  Copyright (c) 2010-2024 Zoltan Herczeg
+  licenses/qtbase/src/3rdparty/pcre2/LICENCE.md
+  attributions/qtbase/src/3rdparty/pcre2/qt_attribution.json
+
+PCRE2 - Stack-less Just-In-Time Compiler (10.47)
+  Qt documentation module   qtcore
+  License   BSD 2-clause "Simplified" License
+  Copyright Zoltan Herczeg
+  licenses/qtbase/src/3rdparty/pcre2/LICENSE-SLJIT
+  attributions/qtbase/src/3rdparty/pcre2/qt_attribution.json
+
+Secure Hash Algorithm SHA-1
+  Qt documentation module   qtcore
+  License   Public Domain
+  Copyright (C) Dominik Reichl <dominik.reichl@t-online.de>
+  Copyright (C) 2016 The Qt Company Ltd
+  licenses/qtbase/LICENSES/LicenseRef-SHA1-Public-Domain.txt
+  attributions/qtbase/src/3rdparty/sha1/qt_attribution.json
+
+Secure Hash Algorithm SHA-3 - brg_endian (1.0.0)
+  Qt documentation module   qtcore
+  License   BSD 2-clause "Simplified" License
+  Copyright (c) 1998-2013, Brian Gladman, Worcester, UK. All rights reserved.
+  licenses/qtbase/src/3rdparty/sha3/BRG_ENDIAN_LICENSE
+  attributions/qtbase/src/3rdparty/sha3/qt_attribution.json
+
+Secure Hash Algorithm SHA-3 - Keccak (3.2)
+  Qt documentation module   qtcore
+  License   Creative Commons Zero v1.0 Universal
+  Guido Bertoni, Joan Daemen, Michaël Peeters and Gilles Van Assche.
+  To the extent possible under law, the implementers have waived all copyright
+  and related or neighboring rights to the source code in this file.
+  licenses/qtbase/src/3rdparty/sha3/CC0_LICENSE
+  attributions/qtbase/src/3rdparty/sha3/qt_attribution.json
+
+Secure Hash Algorithms SHA-384 and SHA-512
+  Qt documentation module   qtcore
+  License   BSD 3-clause "New" or "Revised" License
+  Copyright (c) 2011 IETF Trust and the persons identified as authors of the code.
+  licenses/qtbase/src/3rdparty/rfc6234/LICENSE
+  attributions/qtbase/src/3rdparty/rfc6234/qt_attribution.json
+
+SipHash Algorithm
+  Qt documentation module   qtcore
+  License   Creative Commons Zero v1.0 Universal
+  Copyright (C) 2012-2014 Jean-Philippe Aumasson
+  Copyright (C) 2012-2014 Daniel J. Bernstein <djb@cr.yp.to>
+  Copyright (C) 2016 Intel Corporation
+  licenses/qtbase/LICENSES/CC0-1.0.txt
+  attributions/qtbase/src/3rdparty/siphash/qt_attribution.json
+
+Smooth Scaling Algorithm
+  Qt documentation module   qtgui
+  License   BSD 2-clause "Simplified" License and Imlib2 License
+  Copyright (C) 2004, 2005 Daniel M. Duley.
+  (C) Carsten Haitzler and various contributors.
+  (C) Willem Monsuwe <willem@stack.nl>
+  licenses/qtbase/src/gui/painting/LICENSE.QIMAGETRANSFORM.txt
+  attributions/qtbase/src/gui/painting/qt_attribution.json
+
+sRGB color profile icc file
+  Qt documentation module   qtgui
+  License   International Color Consortium License
+  Copyright International Color Consortium, 2015
+  licenses/qtbase/src/3rdparty/icc/LICENSE.txt
+  attributions/qtbase/src/3rdparty/icc/qt_attribution.json
+
+The Public Suffix List (2026-05-14_08-35-31_UTC)
+  Qt documentation module   qtnetwork
+  License   Mozilla Public License 2.0
+  The list was originally provided by Jo Hermans <jo.hermans@gmail.com>.
+  It is now maintained on github (https://github.com/publicsuffix/list).
+  licenses/qtbase/src/3rdparty/libpsl/PSL-LICENSE.txt
+  attributions/qtbase/src/3rdparty/libpsl/qt_attribution.json
+
+TinyCBOR (7.0)
+  Qt documentation module   qtcore
+  License   MIT License
+  Copyright (C) 2015-2025 Intel Corporation
+  licenses/qtbase/src/3rdparty/tinycbor/LICENSE
+  attributions/qtbase/src/3rdparty/tinycbor/qt_attribution.json
+
+tl::expected (41d3e1f48d682992a2230b2a715bca38b848b269)
+  Qt documentation module   qtcore
+  License   Creative Commons Zero v1.0 Universal
+  To the extent possible under law, Sy Brand has waived all copyright and related or neighboring rights to the expected library. This work is published from: United Kingdom.
+  licenses/qtbase/LICENSES/CC0-1.0.txt
+  attributions/qtbase/src/corelib/global/qt_attribution.json
+
+Unicode Character Database (UCD) (36)
+  Qt documentation module   qtcore
+  License   Unicode License Agreement - Data Files and Software (2016)
+  Copyright (C) 1991-2025 Unicode, Inc.
+  licenses/qtbase/LICENSES/Unicode-3.0.txt
+  attributions/qtbase/src/corelib/text/qt_attribution.json
+
+Unicode Common Locale Data Repository (CLDR) (v48.2)
+  Qt documentation module   qtcore
+  License   Unicode License v3
+  Copyright (C) 2004-2025 Unicode, Inc.
+  licenses/qtbase/LICENSES/Unicode-3.0.txt
+  attributions/qtbase/src/corelib/text/qt_attribution.json
+
+Vulkan API Registry (1.4.308)
+  Qt documentation module   qtgui
+  License   Apache License 2.0 or MIT License
+  Copyright (c) 2015-2025 The Khronos Group Inc.
+  licenses/qtbase/src/gui/vulkan/LICENSE.txt
+  attributions/qtbase/src/gui/vulkan/qt_attribution.json
+
+Vulkan Memory Allocator (3.2.1)
+  Qt documentation module   qtgui
+  License   MIT License
+  Copyright (c) 2017-2025 Advanced Micro Devices, Inc. All rights reserved.
+  licenses/qtbase/src/3rdparty/VulkanMemoryAllocator/LICENSE.txt
+  attributions/qtbase/src/3rdparty/VulkanMemoryAllocator/qt_attribution.json
+
+WebGradients
+  Qt documentation module   qtgui
+  License   MIT License
+  Copyright (c) 2017 itmeo
+  licenses/qtbase/util/gradientgen/LICENSE.WEBGRADIENTS.txt
+  attributions/qtbase/util/gradientgen/qt_attribution.json
+
+Wintab API
+  Qt documentation module   qtgui
+  License   LCS-Telegraphics License
+  Copyright 1991-1998 by LCS/Telegraphics.
+  licenses/qtbase/LICENSES/LicenseRef-Lcs-Telegraphics.txt
+  attributions/qtbase/src/3rdparty/wintab/qt_attribution.json
+
+X Server helper
+  Qt documentation module   qtgui
+  License   X11 License and Historical Permission Notice and Disclaimer
+  Copyright (c) 1987, 1988 X Consortium
+  Copyright 1987, 1988 by Digital Equipment Corporation, Maynard, Massachusetts.
+  licenses/qtbase/src/gui/painting/LICENSE.XCONSORTIUM.txt
+  attributions/qtbase/src/gui/painting/qt_attribution.json
+
+qtsvg
+-----
+
+XSVG
+  Qt documentation module   qtsvg
+  License   Historical Permission Notice and Disclaimer - sell variant
+  Copyright 2002 USC/Information Sciences Institute
+  licenses/qtsvg/src/svg/LICENSE.XSVG.txt
+  attributions/qtsvg/src/svg/qt_attribution.json
+
+qtimageformats
+--------------
+
+TIFF Software Distribution (libtiff) (4.7.2)
+  Qt documentation module   qtimageformats
+  License   libtiff License
+  Copyright (c) 1988-1997 Sam Leffler
+  Copyright (c) 1991-1997 Silicon Graphics, Inc.
+  licenses/qtimageformats/src/3rdparty/libtiff/COPYRIGHT
+  attributions/qtimageformats/src/3rdparty/libtiff/qt_attribution.json
+
+WebP (libwebp) (1.6.0)
+  Qt documentation module   qtimageformats
+  License   BSD 3-clause "New" or "Revised" License
+  Copyright (c) 2010, Google Inc. All rights reserved.
+  licenses/qtimageformats/src/3rdparty/libwebp/COPYING
+  attributions/qtimageformats/src/3rdparty/libwebp/qt_attribution.json
