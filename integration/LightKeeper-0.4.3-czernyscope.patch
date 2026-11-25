@@ -1,0 +1,141 @@
+diff --git a/lightkeeper/procs.py b/lightkeeper/procs.py
+--- a/lightkeeper/procs.py
++++ b/lightkeeper/procs.py
+@@ -102,11 +102,12 @@
+     return str(exe)
+ 
+ 
+-def spawn_detached(args: list[str], log_path: Path | None = None) -> subprocess.Popen:
++def spawn_detached(args: list[str], log_path: Path | None = None, *,
++                   working_dir: Path | None = None) -> subprocess.Popen:
+     """Start a process that outlives the caller (closing the LightKeeper window must not end it)."""
+     out = open(log_path, "ab") if log_path else subprocess.DEVNULL
+-    kw = dict(cwd=str(ROOT), stdin=subprocess.DEVNULL, stdout=out, stderr=subprocess.STDOUT if log_path else subprocess.DEVNULL,
+-              close_fds=True)
++    kw = dict(cwd=str(working_dir if working_dir is not None else ROOT), stdin=subprocess.DEVNULL,
++              stdout=out, stderr=subprocess.STDOUT if log_path else subprocess.DEVNULL, close_fds=True)
+     if IS_WIN:
+         base = 0x08000000 | 0x00000200          # CREATE_NO_WINDOW | CREATE_NEW_PROCESS_GROUP
+         try:                                    # leave any job object of the launching shell, if allowed
+diff --git a/lightkeeper/ui.py b/lightkeeper/ui.py
+--- a/lightkeeper/ui.py
++++ b/lightkeeper/ui.py
+@@ -11,6 +11,7 @@
+ from __future__ import annotations
+ 
+ import datetime as dt
++import importlib.util
+ import json
+ import os
+ import sys
+@@ -36,7 +37,7 @@
+ from .engine import SAT_LEVEL, Engine  # noqa: E402
+ from .icons import ICON_SVG, icon  # noqa: E402,F401
+ from .link import RecorderLink  # noqa: E402
+-from .procs import (app_home, entry_args, live_sessions, needs_watching, open_runs, read_json, set_window_holds, spawn_detached,  # noqa: E402
++from .procs import (app_home, entry_args, gui_python, live_sessions, needs_watching, open_runs, read_json, set_window_holds, spawn_detached,  # noqa: E402
+                     supervisor_alive, watched_runs, watchdog_off,  # noqa: E402
+                     write_json_atomic)
+ from .schedule import (SETUP_FIELDS, DEFAULT_LADDER_MS, DEFAULT_OUT_DIR, DEFAULT_SITE, SUN_EVENTS, RunPlan, estimates, next_clock_time, old_acquisition_defaults,  # noqa: E402
+@@ -523,6 +524,7 @@
+         m.addAction("Resume an unfinished run…", self._resume_dialog)
+         m.addAction("Open a recorded run (read-only)…", self._open_recorded_run)
+         m.addAction("Fetch weather for a run…", self._weather_dialog)
++        m.addAction("Open CzernyScope…", self._open_spectrometer_live)
+         self.a_close_rec = m.addAction("Close the recorded run", self._close_recorded_run); self.a_close_rec.setEnabled(False)
+         m.addSeparator()
+         m.addAction("Open log folder", lambda: os.startfile(str(app_home() / "logs")))
+@@ -543,6 +545,63 @@
+         self.link_lbl = Q.QLabel(""); self.link_lbl.setObjectName("metric_label"); self.link_lbl.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight)
+         nv.addWidget(self.next_lbl); nv.addWidget(self.link_lbl); row.addLayout(nv)
+         return f
++
++    def _open_spectrometer_live(self):
++        if self._spectrometer_live_open():
++            self.statusBar().showMessage("CzernyScope is already open.", 10000)
++            return
++        if self.link is not None or self._expect_attach is not None or live_sessions() or watched_runs():
++            Q.QMessageBox.information(self, APP_NAME, "CzernyScope needs the USB instrument. "
++                                      "Wait for LightKeeper recordings to finish before opening it.")
++            return
++        if self.state != "DISCONNECTED" or self.engine.state != "DISCONNECTED" or self._pending_connect:
++            Q.QMessageBox.information(self, APP_NAME, "Disconnect the spectrometer in LightKeeper first.")
++            return
++
++        source = None
++        configured = os.environ.get("SPECTROMETER_LIVE_SOURCE") or self.settings.value("spectrometer_live_source", "", type=str)
++        if importlib.util.find_spec("spectrometer_app") is None:
++            project = Path(configured) if configured else None
++            if project is None or not (project / "spectrometer_app" / "__main__.py").is_file():
++                folder = Q.QFileDialog.getExistingDirectory(
++                    self, "Choose the CzernyScope project folder", configured
++                )
++                if not folder:
++                    return
++                project = Path(folder)
++            source = next((p for p in (project, project / "src")
++                           if (p / "spectrometer_app" / "__main__.py").is_file()), None)
++            if source is None:
++                Q.QMessageBox.warning(self, APP_NAME, "Choose the folder containing the CzernyScope application.")
++                return
++
++        try:
++            log = app_home() / "logs" / "spectrometer_live.log"
++            process = spawn_detached(
++                [gui_python(), "-X", "utf8", "-m", "spectrometer_app"], log, working_dir=source
++            )
++        except OSError as error:
++            Q.QMessageBox.warning(self, APP_NAME, f"Could not open CzernyScope.\n\n{error}")
++            return
++        self._spectrometer_live = process
++        previous_auto = self._auto
++        self._auto = False
++        if source is not None:
++            self.settings.setValue("spectrometer_live_source", str(source))
++        self.statusBar().showMessage("Opened CzernyScope.", 10000)
++
++        def check_start():
++            code = process.poll()
++            if self._spectrometer_live is process and code is not None and code != 0:
++                self._auto = previous_auto
++                Q.QMessageBox.warning(self, APP_NAME,
++                                      f"CzernyScope exited during startup (code {code}).\n\nLog: {log}")
++
++        QtCore.QTimer.singleShot(1500, self, check_start)
++
++    def _spectrometer_live_open(self):
++        process = getattr(self, "_spectrometer_live", None)
++        return process is not None and process.poll() is None
+ 
+     def _left(self):
+         frame = Q.QFrame(); frame.setObjectName("setup"); frame.setFixedWidth(SETUP_MIN_W)
+@@ -1177,6 +1236,9 @@
+             self.statusBar().showMessage(detail)
+ 
+     def _refresh_devices(self):
++        if self._spectrometer_live_open():
++            self.statusBar().showMessage("Close CzernyScope before refreshing devices.", 10000)
++            return
+         if self.link is not None or live_sessions():
+             self._log("device list not refreshed: a background recorder holds a spectrometer"); return
+         devs, err = list_devices(True)
+@@ -1187,6 +1249,9 @@
+             self._log(f"device search: {err}")
+ 
+     def _connect(self):
++        if self._spectrometer_live_open():
++            self.statusBar().showMessage("Close CzernyScope before connecting here.", 10000)
++            return
+         if self.state == "DISCONNECTED":
+             self._pending_connect = time.time()
+             self.engine.send("connect", self.dev_combo.currentData(), self.cb_edc.isChecked(), self.cb_nlc.isChecked())
+@@ -1792,6 +1857,9 @@
+         self._resume(d, st.get("serial", ""))
+ 
+     def _resume(self, run_dir, serial):
++        if self._spectrometer_live_open():
++            Q.QMessageBox.information(self, APP_NAME, "Close CzernyScope before resuming a recording.")
++            return
+         if self._try_attach(serial):
+             return
+         self._release_local_device()

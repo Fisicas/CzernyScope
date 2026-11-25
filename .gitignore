@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv*/
+/build/
+/dist/
+*.egg-info/
+
+/OceanDirectSamplePack-revised-07-21-2026/
+/oceanview replacement software.txt
+/assets/spectrometer-live-logo-prompt.txt
+/assets/czernyscope-social-preview.png
+/assets/czernyscope-social-preview-slate.png
+/assets/archive/
+Darks/
+Spectra/
